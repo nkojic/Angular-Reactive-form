@@ -1,0 +1,42 @@
+<div>
+  <h1>Ovo je bazna stranica</h1>
+  <p>U ovoj stranici se nalazi neki sadrzaj</p>
+  <p>Ovo je nesko sto se prvo vidi i odakle se ide dalje na modal klikom na neki taster</p>
+  <div>
+    <form [formGroup] = "formaPrviPrikaz" (ngSubmit)="posalji()">
+        <mat-form-field>
+            <input 
+            formControlName="unos"
+            matInput 
+            placeholder="Unos" 
+          >
+          <mat-error *ngIf="formaPrviPrikaz.get('unos').hasError('required')">
+              Obavezan je neki sadrzaj!
+          </mat-error>
+        </mat-form-field>
+        <p>Izaberite</p>
+        <mat-form-field>
+            <mat-select [(value)]="selected" formControlName="lista">
+              <mat-option>None</mat-option>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="formaPrviPrikaz.get('lista').hasError('required')">
+                Obavezan je neki sadrzaj da se izabere!
+            </mat-error>
+          </mat-form-field>
+
+        <div>
+            <button md-raised-button type="submit">Klikni za otvaranje dialog-a</button>
+          <!-- <button md-raised-button (click)="otvotiDialog()" type="submit">Klikni za otvaranje dialog-a</button> -->
+
+          </div>
+        
+    </form>
+   
+  </div>
+  <div>
+    <h3>Ovo je odgovor iz Dialog-a: {{podatakIzDialog}} </h3>
+  </div>
+</div>

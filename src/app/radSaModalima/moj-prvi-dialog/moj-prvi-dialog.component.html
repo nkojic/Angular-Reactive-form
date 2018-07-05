@@ -1,0 +1,31 @@
+<div>
+    <h2 mat-dialog-title>Ovo je moj prvi dijalog</h2>
+    <hr>
+   
+    Ovo je sadrzaj dialoga<br/>
+    <p>Ovo je poslato iz glavnog prozora: {{data.unos}} </p>
+    <hr>
+    <form [formGroup] = "mojaFormaDialog" (ngSubmit)="onSumbitForme()">
+    <mat-dialog-content>
+        <mat-form-field>
+        
+        <input 
+        formControlName="poljePrvoDialog"
+        matInput 
+        placeholder="Polje iz dialog-a" 
+        >
+        <mat-error *ngIf="mojaFormaDialog.get('poljePrvoDialog').hasError('required')">
+            Unesite neki sadrzaj
+        </mat-error>
+        </mat-form-field>
+    
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button md-raised-button type="submit">OK</button>
+      <!-- <button md-raised-button (click)="onClosedOk()">OK</button> -->
+      <button md-raised-button (click)="onClosedCancel()">CANCEL</button>
+    </mat-dialog-actions>
+    </form>
+    </div>

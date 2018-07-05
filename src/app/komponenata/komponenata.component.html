@@ -1,0 +1,42 @@
+{{"Sadrzaj iz html-a nove komponente koji se prikazuje u app.component.html"}}
+<p>Prikaz Material komponente</p>
+
+<form [formGroup] = "mojaForma" (ngSubmit)="posalji()">
+    <div *ngIf="mojaForma.hasError">Greska u formi</div>
+    <mat-form-field>
+        <input 
+        formControlName="hrana"
+        matInput 
+        placeholder="Favorite food" 
+        value="">
+        <!--*ngIf="mojaForma.get('hrana').touched && mojaForma.get('hrana').invalid-->
+        <mat-error *ngIf="mojaForma.get('hrana').hasError('required')">
+            Unesite neki sadrzaj
+        </mat-error>
+        <mat-error *ngIf="mojaForma.get('hrana').hasError('minlength')">
+            Mora vise od 3
+        </mat-error>
+        <mat-error *ngIf="mojaForma.get('hrana').hasError('nemaSpace')">
+           Ne moze space
+        </mat-error>
+        <mat-error *ngIf="mojaForma.get('hrana').hasError('pattern')">
+            Mora velika slova zbog RegExp
+         </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+            <input 
+            formControlName="mail"
+            matInput 
+            placeholder="Mail" 
+            value="Jagode">
+            <!--*ngIf="mojaForma.get('hrana').touched && mojaForma.get('hrana').invalid-->
+            <mat-error *ngIf="mojaForma.get('mail').hasError('required')">
+                Unesite neki sadrzaj
+            </mat-error>
+            <mat-error *ngIf="mojaForma.get('mail').hasError('email')">
+                Nije format mail-a
+            </mat-error>
+            <mat-error *ngIf="mojaForma.get('mail').hasError('nemaSpace')">
+               Ne moze space
+            </mat-error>
+        </mat-form-field>
